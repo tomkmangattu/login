@@ -14,6 +14,7 @@ class OtpWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'Enter Otp',
@@ -27,6 +28,7 @@ class OtpWidget extends StatelessWidget {
           TextFormField(
             maxLength: 6,
             autofocus: true,
+            keyboardType: TextInputType.number,
             cursorColor: Colors.white,
             style: TextStyle(
               color: Colors.white,

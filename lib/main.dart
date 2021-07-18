@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:login/screens/home%20page.dart';
+import 'screens/user details.dart';
 import 'package:login/screens/welcome%20page.dart';
 
 void main() async {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         WelcomeScreen.id: (_) => WelcomeScreen(),
         HomePage.id: (_) => HomePage(),
+        UserDetails.id: (_) => UserDetails(),
       },
     );
   }

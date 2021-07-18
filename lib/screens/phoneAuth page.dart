@@ -4,6 +4,7 @@ import 'package:login/constants.dart';
 import 'package:login/cubit/mobileauth_cubit.dart';
 import 'package:login/screens/home%20page.dart';
 import 'package:login/screens/otp%20page.dart';
+import 'package:login/screens/user%20details.dart';
 import 'package:login/screens/welcome%20page.dart';
 
 class PhoneAuthScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class PhoneAuthScreen extends StatelessWidget {
                 if (state is MobileauthSucess) {
                   return _sucess();
                 } else if (state is MobileauthOtpSend) {
-                  return OtpWidget();
+                  return Center(child: OtpWidget());
                 } else if (state is MobileauthError) {
                   return _error(state);
                 }
@@ -47,7 +48,7 @@ class PhoneAuthScreen extends StatelessWidget {
     await Future.delayed(const Duration(seconds: 3));
     if (sucess) {
       Navigator.popUntil(context, ModalRoute.withName(WelcomeScreen.id));
-      Navigator.popAndPushNamed(context, HomePage.id);
+      Navigator.popAndPushNamed(context, UserDetails.id);
     } else {
       Navigator.pop(context);
     }

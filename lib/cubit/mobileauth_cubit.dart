@@ -7,7 +7,7 @@ part 'mobileauth_state.dart';
 class MobileauthCubit extends Cubit<MobileauthState> {
   final String phoneNo;
   late final String _verificationId;
-  bool _signInStarted = false;
+  //bool _signInStarted = false;
   FirebaseAuth _auth = FirebaseAuth.instance;
   MobileauthCubit({required this.phoneNo}) : super(MobileauthInitial()) {
     _verifyPhoneNumber();
@@ -19,17 +19,17 @@ class MobileauthCubit extends Cubit<MobileauthState> {
 
     final PhoneVerificationCompleted _verificationCompleted =
         (PhoneAuthCredential credential) {
-      _signInStarted = true;
-      try {
-        _auth.signInWithCredential(credential);
-      } catch (e) {
-        emit(
-          MobileauthError(
-              error:
-                  'Sorry SomeThing went wrong please try again after some time'),
-        );
-      }
-      emit(MobileauthSucess());
+      // _signInStarted = true;
+      // try {
+      //   _auth.signInWithCredential(credential);
+      // } catch (e) {
+      //   emit(
+      //     MobileauthError(
+      //         error:
+      //             'Sorry SomeThing went wrong please try again after some time'),
+      //   );
+      // }
+      // emit(MobileauthSucess());
     };
 
     final PhoneVerificationFailed _verificationFailed =
@@ -47,10 +47,11 @@ class MobileauthCubit extends Cubit<MobileauthState> {
     final PhoneCodeSent _phoneCodeSent =
         (String verificationId, int? resendToken) async {
       _verificationId = verificationId;
-      await Future.delayed(const Duration(seconds: 15));
-      if (!_signInStarted) {
-        emit(MobileauthOtpSend());
-      }
+      // await Future.delayed(const Duration(seconds: 15));
+      // if (!_signInStarted) {
+      //   emit(MobileauthOtpSend());
+      // }
+      emit(MobileauthOtpSend());
     };
 
     final PhoneCodeAutoRetrievalTimeout _autoRetrievalTimeOut =
